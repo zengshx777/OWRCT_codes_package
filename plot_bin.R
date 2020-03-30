@@ -1,0 +1,640 @@
+plot_size=2.3
+#setwd("C:/Users/Shuxi ZENG/Dropbox/Third Year/OW_Randomization/results_0327/binary")
+
+pdf("bin_MCSD.pdf",height=2.8*plot_size,width=4*plot_size)
+
+m <- matrix(c(1,4,7,10,2,5,8,11,3,6,9,12,13,13,13,13),nrow = 4,ncol = 4,byrow = TRUE)
+
+layout(mat = m,heights = c(0.5,0.5,0.5,0.15))
+h.degree=0
+pt=0.5
+mis.specified=0
+rare.degree=0
+load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,3])^2,type='o',
+     xlab="",
+     ylab="Relative efficiency",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(a)",tau[RD])),
+     # main=substitute(paste("Standard deviation, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.25),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,3])^2,type='o',
+     xlab="",
+     ylab="Relative efficiency",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(a)",tau[RR])),
+     # main=substitute(paste("Standard deviation, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.25),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,3])^2,type='o',
+     xlab="Sample size",
+     ylab="Relative efficiency",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(a)",tau[OR])),
+     # main=substitute(paste("Standard deviation, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.25),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+
+
+h.degree=0
+pt=0.5
+mis.specified=1
+rare.degree=0
+load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,3])^2,type='o',
+     xlab="",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(b)",tau[RD])),
+     # main=substitute(paste("Standard deviation, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.25),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,3])^2,type='o',
+     xlab="",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(b)",tau[RR])),
+     # main=substitute(paste("Standard deviation, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.25),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,3])^2,type='o',
+     xlab="Sample size",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(b)",tau[OR])),
+     # main=substitute(paste("Standard deviation, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.25),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+h.degree=0
+pt=0.5
+mis.specified=0
+rare.degree=-0.85
+load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,3])^2,type='o',
+     xlab="",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(c)",tau[RD])),
+     # main=substitute(paste("Standard deviation, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.25),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,3])^2,type='o',
+     xlab="",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(c)",tau[RR])),
+     # main=substitute(paste("Standard deviation, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.25),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,3])^2,type='o',
+     xlab="Sample size",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(c)",tau[OR])),
+     # main=substitute(paste("Standard deviation, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.25),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+h.degree=0
+pt=0.5
+mis.specified=1
+rare.degree=-0.85
+load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,3])^2,type='o',
+     xlab="",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(d)",tau[RD])),
+     # main=substitute(paste("Standard deviation, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.25),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,3])^2,type='o',
+     xlab="",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(d)",tau[RR])),
+     # main=substitute(paste("Standard deviation, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.25),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,3])^2,type='o',
+     xlab="Sample size",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(d)",tau[OR])),
+     # main=substitute(paste("Standard deviation, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.25),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(0,0,1,0))
+plot(1, type = "n", axes=FALSE, xlab="", ylab="")
+legend("top",inset=0,title="Relative efficiency to DIF", col=c("black","purple","red"),lwd=1.5,
+       lty=1,pch=c(1,3,2),legend=c("IPW","LR","OW"),horiz=TRUE)
+
+
+dev.off()
+
+
+
+
+
+
+plot_size=2.3
+pdf("bin_MCSD_variation.pdf",height=2.8*plot_size,width=4*plot_size)
+#par(mfcol=c(3,4),mar = c(4, 4.5, 2, 1))
+m <- matrix(c(1,4,7,10,2,5,8,11,3,6,9,12,13,13,13,13),nrow = 4,ncol = 4,byrow = TRUE)
+
+layout(mat = m,heights = c(0.5,0.5,0.5,0.15))
+
+h.degree=0.75
+pt=0.5
+mis.specified=0
+rare.degree=0
+load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,3])^2,type='o',
+     xlab="",
+     ylab="Relative efficiency",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(e)",tau[RD])),
+     # main=substitute(paste("Standard deviation, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,3])^2,type='o',
+     xlab="",
+     ylab="Relative efficiency",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(e)",tau[RR])),
+     # main=substitute(paste("Standard deviation, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,3])^2,type='o',
+     xlab="Sample size",
+     ylab="Relative efficiency",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(e)",tau[OR])),
+     # main=substitute(paste("Standard deviation, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+
+
+h.degree=0
+pt=0.7
+mis.specified=0
+rare.degree=0
+load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,3])^2,type='o',
+     xlab="",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(f)",tau[RD])),
+     # main=substitute(paste("Standard deviation, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,3])^2,type='o',
+     xlab="",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(f)",tau[RR])),
+     # main=substitute(paste("Standard deviation, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,3])^2,type='o',
+     xlab="Sample size",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(f)",tau[OR])),
+     # main=substitute(paste("Standard deviation, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+h.degree=0
+pt=0.5
+mis.specified=0
+rare.degree=-1.386
+load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,3])^2,type='o',
+     xlab="",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(g)",tau[RD])),
+     # main=substitute(paste("Standard deviation, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,3])^2,type='o',
+     xlab="",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(g)",tau[RR])),
+     # main=substitute(paste("Standard deviation, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,3])^2,type='o',
+     xlab="Sample size",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(g)",tau[OR])),
+     # main=substitute(paste("Standard deviation, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+h.degree=0
+pt=0.5
+mis.specified=0
+rare.degree=-2.197
+load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,3])^2,type='o',
+     xlab="",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(h)",tau[RD])),
+     # main=substitute(paste("Standard deviation, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_DIFF[,1],(MC_SD_DIFF[,2]/MC_SD_DIFF[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,3])^2,type='o',
+     xlab="",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(h)",tau[RR])),
+     # main=substitute(paste("Standard deviation, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_RISK[,1],(MC_SD_RISK[,2]/MC_SD_RISK[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(4, 4.5, 2, 1))
+plot(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,3])^2,type='o',
+     xlab="Sample size",
+     ylab="",
+     #     ylab=expression(paste('SD'[DIF],' /SD')),
+     main=expression(paste("(h)",tau[OR])),
+     # main=substitute(paste("Standard deviation, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+     #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+     ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
+     col="black",pch=1,lwd=2)
+lines(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,4])^2,type='o',col="red",pch=2,lwd=2)
+lines(MC_SD_ODDS[,1],(MC_SD_ODDS[,2]/MC_SD_ODDS[,5])^2,type='o',col="purple",pch=3,lwd=2)
+abline(h=1,lty=2,lwd=2)
+
+par(mar = c(0,0,1,0))
+plot(1, type = "n", axes=FALSE, xlab="", ylab="")
+legend("top",inset=0,title="Relative efficiency to DIF", col=c("black","purple","red"),lwd=1.5,
+       lty=1,pch=c(1,3,2),legend=c("IPW","LR","OW"),horiz=TRUE)
+
+
+dev.off()
+
+
+
+
+
+# pdf("bin_cov.pdf",height=3*plot_size,width=5*plot_size)
+# par(mfcol=c(3,4),mar = c(4, 4.5, 2, 1))
+# 
+# 
+# h.degree=0
+# pt=0.5
+# mis.specified=0
+# rare.degree=0
+# load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
+# 
+# plot(CRATE_DIFF[,1],CRATE_DIFF[,2],type='o',
+#      xlab="",cex.main=2,cex.lab=1.5,
+#      ylab="Coverage rate",ylim=c(min(CRATE_DIFF[,-1]),1),
+#      main=expression(paste("(a)",tau[RD])),
+#      # main=substitute(paste("Coverage rate, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+#      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+#      col="blue",pch=4,lwd=2)
+# lines(CRATE_DIFF[,1],CRATE_DIFF[,3],type='o',col="black",pch=1,lwd=2)
+# lines(CRATE_DIFF[,1],CRATE_DIFF[,4],type='o',col="red",pch=2,lwd=2)
+# lines(CRATE_DIFF[,1],CRATE_DIFF[,5],type='o',col="purple",pch=3,lwd=2)
+# abline(h=0.95,lty=2,lwd=2)
+# 
+# plot(CRATE_RISK[,1],CRATE_RISK[,2],type='o',
+#      xlab="",cex.main=2,cex.lab=1.5,
+#      ylab="Coverage rate",ylim=c(min(CRATE_RISK[,-1]),1),
+#      main=expression(paste("(a)",tau[RR])),
+#      # main=substitute(paste("Coverage rate, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+#      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+#      col="blue",pch=4,lwd=2)
+# lines(CRATE_RISK[,1],CRATE_RISK[,3],type='o',col="black",pch=1,lwd=2)
+# lines(CRATE_RISK[,1],CRATE_RISK[,4],type='o',col="red",pch=2,lwd=2)
+# lines(CRATE_RISK[,1],CRATE_RISK[,5],type='o',col="purple",pch=3,lwd=2)
+# abline(h=0.95,lty=2,lwd=2)
+# 
+# plot(CRATE_ODDS[,1],CRATE_ODDS[,2],type='o',
+#      xlab="Sample size",cex.main=2,cex.lab=1.5,
+#      ylab="Coverage rate",ylim=c(min(CRATE_ODDS[,-1]),1),
+#      main=expression(paste("(a)",tau[OR])),
+#      # main=substitute(paste("Coverage rate, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+#      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+#      col="blue",pch=5,lwd=2)
+# lines(CRATE_ODDS[,1],CRATE_ODDS[,3],type='o',col="black",pch=1,lwd=2)
+# lines(CRATE_ODDS[,1],CRATE_ODDS[,4],type='o',col="red",pch=2,lwd=2)
+# lines(CRATE_ODDS[,1],CRATE_ODDS[,5],type='o',col="purple",pch=3,lwd=2)
+# abline(h=0.95,lty=2,lwd=2)
+# 
+# h.degree=0
+# pt=0.5
+# mis.specified=1
+# rare.degree=0
+# load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
+# 
+# plot(CRATE_DIFF[,1],CRATE_DIFF[,2],type='o',
+#      xlab="",cex.main=2,cex.lab=1.5,
+#      ylab="",ylim=c(min(CRATE_DIFF[,-1]),1),
+#      main=expression(paste("(b)",tau[RD])),
+#      # main=substitute(paste("Coverage rate, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+#      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+#      col="blue",pch=4,lwd=2)
+# lines(CRATE_DIFF[,1],CRATE_DIFF[,3],type='o',col="black",pch=1,lwd=2)
+# lines(CRATE_DIFF[,1],CRATE_DIFF[,4],type='o',col="red",pch=2,lwd=2)
+# lines(CRATE_DIFF[,1],CRATE_DIFF[,5],type='o',col="purple",pch=3,lwd=2)
+# abline(h=0.95,lty=2,lwd=2)
+# 
+# plot(CRATE_RISK[,1],CRATE_RISK[,2],type='o',
+#      xlab="",cex.main=2,cex.lab=1.5,
+#      ylab="",ylim=c(min(CRATE_RISK[,-1]),1),
+#      main=expression(paste("(b)",tau[RR])),
+#      # main=substitute(paste("Coverage rate, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+#      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+#      col="blue",pch=4,lwd=2)
+# lines(CRATE_RISK[,1],CRATE_RISK[,3],type='o',col="black",pch=1,lwd=2)
+# lines(CRATE_RISK[,1],CRATE_RISK[,4],type='o',col="red",pch=2,lwd=2)
+# lines(CRATE_RISK[,1],CRATE_RISK[,5],type='o',col="purple",pch=3,lwd=2)
+# abline(h=0.95,lty=2,lwd=2)
+# 
+# plot(CRATE_ODDS[,1],CRATE_ODDS[,2],type='o',
+#      xlab="Sample size",cex.main=2,cex.lab=1.5,
+#      ylab="",ylim=c(min(CRATE_ODDS[,-1]),1),
+#      main=expression(paste("(b)",tau[OR])),
+#      # main=substitute(paste("Coverage rate, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+#      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+#      col="blue",pch=5,lwd=2)
+# lines(CRATE_ODDS[,1],CRATE_ODDS[,3],type='o',col="black",pch=1,lwd=2)
+# lines(CRATE_ODDS[,1],CRATE_ODDS[,4],type='o',col="red",pch=2,lwd=2)
+# lines(CRATE_ODDS[,1],CRATE_ODDS[,5],type='o',col="purple",pch=3,lwd=2)
+# abline(h=0.95,lty=2,lwd=2)
+# 
+# 
+# h.degree=0
+# pt=0.5
+# mis.specified=0
+# rare.degree=-0.85
+# load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
+# 
+# plot(CRATE_DIFF[,1],CRATE_DIFF[,2],type='o',
+#      xlab="",cex.main=2,cex.lab=1.5,
+#      ylab="",ylim=c(min(CRATE_DIFF[,-1]),1),
+#      main=expression(paste("(c)",tau[RD])),
+#      # main=substitute(paste("Coverage rate, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+#      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+#      col="blue",pch=4,lwd=2)
+# lines(CRATE_DIFF[,1],CRATE_DIFF[,3],type='o',col="black",pch=1,lwd=2)
+# lines(CRATE_DIFF[,1],CRATE_DIFF[,4],type='o',col="red",pch=2,lwd=2)
+# lines(CRATE_DIFF[,1],CRATE_DIFF[,5],type='o',col="purple",pch=3,lwd=2)
+# abline(h=0.95,lty=2,lwd=2)
+# 
+# plot(CRATE_RISK[,1],CRATE_RISK[,2],type='o',
+#      xlab="",cex.main=2,cex.lab=1.5,
+#      ylab="",ylim=c(min(CRATE_RISK[,-1]),1),
+#      main=expression(paste("(c)",tau[RR])),
+#      # main=substitute(paste("Coverage rate, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+#      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+#      col="blue",pch=4,lwd=2)
+# lines(CRATE_RISK[,1],CRATE_RISK[,3],type='o',col="black",pch=1,lwd=2)
+# lines(CRATE_RISK[,1],CRATE_RISK[,4],type='o',col="red",pch=2,lwd=2)
+# lines(CRATE_RISK[,1],CRATE_RISK[,5],type='o',col="purple",pch=3,lwd=2)
+# abline(h=0.95,lty=2,lwd=2)
+# 
+# plot(CRATE_ODDS[,1],CRATE_ODDS[,2],type='o',
+#      xlab="Sample size",cex.main=2,cex.lab=1.5,
+#      ylab="",ylim=c(min(CRATE_ODDS[,-1]),1),
+#      main=expression(paste("(c)",tau[OR])),
+#      # main=substitute(paste("Coverage rate, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+#      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+#      col="blue",pch=5,lwd=2)
+# lines(CRATE_ODDS[,1],CRATE_ODDS[,3],type='o',col="black",pch=1,lwd=2)
+# lines(CRATE_ODDS[,1],CRATE_ODDS[,4],type='o',col="red",pch=2,lwd=2)
+# lines(CRATE_ODDS[,1],CRATE_ODDS[,5],type='o',col="purple",pch=3,lwd=2)
+# abline(h=0.95,lty=2,lwd=2)
+# 
+# 
+# h.degree=0
+# pt=0.5
+# mis.specified=1
+# rare.degree=-0.85
+# load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
+# 
+# plot(CRATE_DIFF[,1],CRATE_DIFF[,2],type='o',
+#      xlab="",cex.main=2,cex.lab=1.5,
+#      ylab="",ylim=c(min(CRATE_DIFF[,-1]),1),
+#      main=expression(paste("(d)",tau[RD])),
+#      # main=substitute(paste("Coverage rate, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+#      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+#      col="blue",pch=4,lwd=2)
+# lines(CRATE_DIFF[,1],CRATE_DIFF[,3],type='o',col="black",pch=1,lwd=2)
+# lines(CRATE_DIFF[,1],CRATE_DIFF[,4],type='o',col="red",pch=2,lwd=2)
+# lines(CRATE_DIFF[,1],CRATE_DIFF[,5],type='o',col="purple",pch=3,lwd=2)
+# abline(h=0.95,lty=2,lwd=2)
+# 
+# plot(CRATE_RISK[,1],CRATE_RISK[,2],type='o',
+#      xlab="",cex.main=2,cex.lab=1.5,
+#      ylab="",ylim=c(min(CRATE_RISK[,-1]),1),
+#      main=expression(paste("(d)",tau[RR])),
+#      # main=substitute(paste("Coverage rate, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+#      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+#      col="blue",pch=4,lwd=2)
+# lines(CRATE_RISK[,1],CRATE_RISK[,3],type='o',col="black",pch=1,lwd=2)
+# lines(CRATE_RISK[,1],CRATE_RISK[,4],type='o',col="red",pch=2,lwd=2)
+# lines(CRATE_RISK[,1],CRATE_RISK[,5],type='o',col="purple",pch=3,lwd=2)
+# abline(h=0.95,lty=2,lwd=2)
+# 
+# plot(CRATE_ODDS[,1],CRATE_ODDS[,2],type='o',
+#      xlab="Sample size",cex.main=2,cex.lab=1.5,
+#      ylab="",ylim=c(min(CRATE_ODDS[,-1]),1),
+#      main=expression(paste("(d)",tau[OR])),
+#      # main=substitute(paste("Coverage rate, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
+#      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
+#      col="blue",pch=5,lwd=2)
+# lines(CRATE_ODDS[,1],CRATE_ODDS[,3],type='o',col="black",pch=1,lwd=2)
+# lines(CRATE_ODDS[,1],CRATE_ODDS[,4],type='o',col="red",pch=2,lwd=2)
+# lines(CRATE_ODDS[,1],CRATE_ODDS[,5],type='o',col="purple",pch=3,lwd=2)
+# abline(h=0.95,lty=2,lwd=2)
+# legend("bottomright",col=c("blue","black","purple","red"),lwd=2,
+#        lty=1,pch=c(4,1,3,2),legend=c("DIF","IPW","LR","OW"))
+# 
+# dev.off()
+
+
+pdf("non-covergence.pdf",width=4,height=4)
+h.degree=0
+pt=0.5
+mis.specified=0
+rare.degree=0
+load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
+plot(NON_CONVER[,1],NON_CONVER[,2]/2000,type='l',lwd=2,ylim=c(0,1),
+     main=" ",ylab="Probability",cex.main=2,cex.lab=1.5,
+     xlab="Sample size")
+
+h.degree=0
+pt=0.5
+mis.specified=0
+rare.degree=-0.85
+load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
+lines(NON_CONVER[,1],NON_CONVER[,2]/2000,lwd=2,lty=2)
+
+h.degree=0
+pt=0.5
+mis.specified=0
+rare.degree=-1.386
+load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
+lines(NON_CONVER[,1],NON_CONVER[,2]/2000,lwd=2,lty=6)
+
+h.degree=0
+pt=0.5
+mis.specified=0
+rare.degree=-2.197
+load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
+lines(NON_CONVER[,1],NON_CONVER[,2]/2000,lwd=2,lty=4)
+legend("topright",lty=c(1,2,6,4),lwd=2,legend=c("u=0.5","u=0.3","u=0.2","u=0.1"))
+dev.off()

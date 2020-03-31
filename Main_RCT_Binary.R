@@ -217,9 +217,9 @@ for (n in n.grid){
   MC_SD_RISK=rbind(MC_SD_RISK,c(n,apply(EST_RISK[complete.id,],2,FUN=function(x){sd(x,na.rm = T)})))
   MC_SD_ODDS=rbind(MC_SD_ODDS,c(n,apply(EST_ODDS[complete.id,],2,FUN=function(x){sd(x,na.rm = T)})))
   
-  SE_DIFF[SE_DIFF>100]=NA
-  SE_RISK[SE_RISK>100]=NA
-  SE_ODDS[SE_ODDS>100]=NA
+  SE_DIFF[SE_DIFF>10]=NA
+  SE_RISK[SE_RISK>10]=NA
+  SE_ODDS[SE_ODDS>10]=NA
   
   EST_SD_DIFF=rbind(EST_SD_DIFF,c(n,colMeans(SE_DIFF[complete.id,],na.rm=T)))
   EST_SD_RISK=rbind(EST_SD_RISK,c(n,colMeans(SE_RISK[complete.id,],na.rm=T)))

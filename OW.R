@@ -1,4 +1,4 @@
-OW <- function(y, z, W,var_method=1,binary=0){
+OW <- function(y, z, W,var_method=1,binary=0,log_scale=1){
 ###y:outcome
 ###z:treatment status
 ###W:Components in logistic regression for propensity score model
@@ -162,9 +162,18 @@ OW <- function(y, z, W,var_method=1,binary=0){
     # point estimate
     mu1.h <- sum(z*y*(1-e.h)) / sum(z*(1-e.h))
     mu0.h <- sum((1-z)*y*e.h) / sum((1-z)*e.h)
-    log_odds_ratio=log(mu1.h/(1-mu1.h))-log(mu0.h/(1-mu0.h))
-    log_risk_ratio=log(mu1.h/mu0.h)
-    mean_diff=mu1.h-mu0.h
+    
+    # point estimate
+    if(log_scale==1){
+      log_odds_ratio=log(mu1.h/(1-mu1.h))-log(mu0.h/(1-mu0.h))
+      log_risk_ratio=log(mu1.h/mu0.h)
+      mean_diff=mu1.h-mu0.h
+    }
+    else{
+      log_odds_ratio=(mu1.h*(1-mu0.h))/((1-mu1.h)*mu0.h)
+      log_risk_ratio=mu1.h/mu0.h
+      mean_diff=mu1.h-mu0.h
+    }
     
     ###Variance Estimate from Empirical Sandwich Method
     # ###Exploit parametric information
@@ -188,9 +197,16 @@ OW <- function(y, z, W,var_method=1,binary=0){
       
       
       ##Delta Method Gradient Vector
-      grad_risk=c(1/mu1.h,-1/mu0.h)
-      grad_odds=c(1/(mu1.h*(1-mu1.h)),-1/(mu0.h*(1-mu0.h)))
-      grad_diff=c(1,-1)
+      if (log_scale==1){
+        grad_risk=c(1/mu1.h,-1/mu0.h)
+        grad_odds=c(1/(mu1.h*(1-mu1.h)),-1/(mu0.h*(1-mu0.h)))
+        grad_diff=c(1,-1)
+      }
+      else{
+        grad_risk=c(1/mu0.h,-mu1.h/mu0.h^2)
+        grad_odds=c((1-mu0.h)/((1-mu1.h)^2*mu0.h),-mu1.h/((1-mu1.h)*mu0.h^2))
+        grad_diff=c(1,-1)
+      }
       
       ##Calculate Asymptotic Variance
       v_risk=t(grad_risk)%*%Cov.m%*%grad_risk
@@ -223,9 +239,17 @@ OW <- function(y, z, W,var_method=1,binary=0){
         
         
         ##Delta Method Gradient Vector
-        grad_risk=c(1/mu1.h,-1/mu0.h)
-        grad_odds=c(1/(mu1.h*(1-mu1.h)),-1/(mu0.h*(1-mu0.h)))
-        grad_diff=c(1,-1)
+        if (log_scale==1){
+          grad_risk=c(1/mu1.h,-1/mu0.h)
+          grad_odds=c(1/(mu1.h*(1-mu1.h)),-1/(mu0.h*(1-mu0.h)))
+          grad_diff=c(1,-1)
+        }
+        else{
+          grad_risk=c(1/mu0.h,-mu1.h/mu0.h^2)
+          grad_odds=c((1-mu0.h)/((1-mu1.h)^2*mu0.h),-mu1.h/((1-mu1.h)*mu0.h^2))
+          grad_diff=c(1,-1)
+        }
+        
         
         ##Calculate Asymptotic Variance
         v_risk=t(grad_risk)%*%Cov.m%*%grad_risk

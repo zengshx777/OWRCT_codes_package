@@ -31,6 +31,11 @@ baseline_covariates_name=c("age","race_1","race_2",
                            "avgseatedpulse",
                            "ahi_primary","ess_total_base")
 
+# baseline_covariates_name=c("age","race_1","race_2",
+#                            "bmi","gender",
+#                            "avgseatedsystolic",
+#                            "ahi_primary","ess_total_base")
+
 ###Outcome Codename
 ##Blood Pressure
 ### bp24sbpweight
@@ -56,11 +61,11 @@ data.month6=read.csv("bestair-month6-dataset-0.3.0.csv")
 ##Rename/Create variable
 data.baseline$ess_total_base=data.baseline$ess_total
 
-##Create binary outcome
+#Create binary outcome
 data.month6$res_hyper=NA
-data.month6$res_hyper[data.month6$bp24sbpweight>140]=1
-data.month6$res_hyper[data.month6$bp24dbpweight>90]=1
-data.month6$res_hyper[data.month6$bp24sbpweight<=140&data.month6$bp24dbpweight<=90]=0
+data.month6$res_hyper[data.month6$bp24sbpweight>=130]=1
+data.month6$res_hyper[data.month6$bp24sbpweight<130]=0
+
 
 #Categorical into dummY
 data.baseline$race_1=0
@@ -137,10 +142,10 @@ y=res_hyper_data$res_hyper
 Tr=res_hyper_data$pooled_treatmentarm
 W=cbind(1,X)
 
-res_unadj_6_res=Crude(y=y,z=Tr,W=W,binary=1)
-res_ipw_6_res=IPWC(y.all=y,z.all=Tr,W.all=W,q.all=0,binary=1)
-res_ow_6_res=OW(y=y,z=Tr,W=W,binary=1)
-res_lr_6_res=LR(y=y,z=Tr,W=X,binary=1,filter_numeric_error = F)
+res_unadj_6_res=Crude(y=y,z=Tr,W=W,binary=1,log_scale = 1)
+res_ipw_6_res=IPWC(y.all=y,z.all=Tr,W.all=W,q.all=0,binary=1,log_scale = 1)
+res_ow_6_res=OW(y=y,z=Tr,W=W,binary=1,log_scale = 1)
+res_lr_6_res=LR(y=y,z=Tr,W=X,binary=1,filter_numeric_error = F,log_scale = 1)
 ##Log binomial, fitted 0 or 1, numerical error
 #res_lr_6_res=LR(y=y,z=Tr,W=X,binary=1,filter_numeric_error = F,logit_link=0)
 

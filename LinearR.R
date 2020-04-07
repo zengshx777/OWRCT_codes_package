@@ -1,6 +1,6 @@
 library(sandwich)
 ###Linear Regression
-LR <- function(y, z, W,binary=0,filter_numeric_error=T,logit_link=1){
+LR <- function(y, z, W,binary=0,filter_numeric_error=T,logit_link=1,log_scale=1){
   ###Linear Regression with interaction
   ###center the covariate
   ###W do not include intercept
@@ -86,15 +86,28 @@ LR <- function(y, z, W,binary=0,filter_numeric_error=T,logit_link=1){
       #log_odds_ratio=mean(log(m1/(1-m1)))-mean(log(m0/(1-m0)))
       mu1=mean(m1)
       mu0=mean(m0)
-      
+      if(log_scale==1){
       log_odds_ratio=log(mu1/(1-mu1))-log(mu0/(1-mu0))
       log_risk_ratio=log(mu1/mu0)
       mean_diff=mu1-mu0
+      }
+      else{
+        log_odds_ratio=(mu1*(1-mu0))/((1-mu1)*mu0)
+        log_risk_ratio=mu1/mu0
+        mean_diff=mu1-mu0
+      }
       
       ##Delta Method Gradient Vector
+      if (log_scale==1){
       grad_risk=c(1/mu1,-1/mu0)
       grad_odds=c(1/(mu1*(1-mu1)),-1/(mu0*(1-mu0)))
       grad_diff=c(1,-1)
+      }
+      else{
+        grad_risk=c(1/mu0,-mu1/mu0^2)
+        grad_odds=c((1-mu0)/((1-mu1)^2*mu0),-mu1/((1-mu1)*mu0^2))
+        grad_diff=c(1,-1)
+      }
       
       ##Calculate Asymptotic Variance
       v_risk=t(grad_risk)%*%Cov.m%*%grad_risk

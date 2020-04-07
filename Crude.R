@@ -1,5 +1,5 @@
 ###Unadjusted one
-Crude <- function(y, z, W,binary=0){
+Crude <- function(y, z, W,binary=0,log_scale=1){
   
   # module for checking balance
   diff <- function(cov, z){
@@ -51,18 +51,33 @@ Crude <- function(y, z, W,binary=0){
     mu0 <- sum((1-z)*y) / n0
     
     # point estimate
-    log_odds_ratio=log(mu1/(1-mu1))-log(mu0/(1-mu0))
-    log_risk_ratio=log(mu1/mu0)
-    mean_diff=mu1-mu0
+    if(log_scale==1){
+      log_odds_ratio=log(mu1/(1-mu1))-log(mu0/(1-mu0))
+      log_risk_ratio=log(mu1/mu0)
+      mean_diff=mu1-mu0
+    }
+    else{
+      log_odds_ratio=(mu1*(1-mu0))/((1-mu1)*mu0)
+      log_risk_ratio=mu1/mu0
+      mean_diff=mu1-mu0
+    }
     
     
     #Ignore the correlation in Y1,Y0
     Cov.m=diag(c(var(y[z==1])/n1,var(y[z==0])/n0))
     
     ##Delta Method Gradient Vector
-    grad_risk=c(1/mu1,-1/mu0)
-    grad_odds=c(1/(mu1*(1-mu1)),-1/(mu0*(1-mu0)))
-    grad_diff=c(1,-1)
+    if (log_scale==1){
+      grad_risk=c(1/mu1,-1/mu0)
+      grad_odds=c(1/(mu1*(1-mu1)),-1/(mu0*(1-mu0)))
+      grad_diff=c(1,-1)
+    }
+    else{
+      grad_risk=c(1/mu0,-mu1/mu0^2)
+      grad_odds=c((1-mu0)/((1-mu1)^2*mu0),-mu1/((1-mu1)*mu0^2))
+      grad_diff=c(1,-1)
+    }
+    
     
     ##Calculate Asymptotic Variance
     v_risk=t(grad_risk)%*%Cov.m%*%grad_risk

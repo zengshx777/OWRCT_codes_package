@@ -1,4 +1,4 @@
-IPWC <- function(y.all, z.all, W.all, q.all,binary=0){
+IPWC <- function(y.all, z.all, W.all, q.all,binary=0,log_scale=1){
   library(MASS)
   
   # module for checking balance in the weighted sample
@@ -114,15 +114,32 @@ IPWC <- function(y.all, z.all, W.all, q.all,binary=0){
     # point estimate
     mu1.h <- sum(z.all*y.all/e.h) / sum(z.all/e.h)
     mu0.h <- sum((1-z.all)*y.all/(1-e.h)) / sum((1-z.all)/(1-e.h))
-    log_odds_ratio=log(mu1.h/(1-mu1.h))-log(mu0.h/(1-mu0.h))
-    log_risk_ratio=log(mu1.h/mu0.h)
-    mean_diff=mu1.h-mu0.h
+    # point estimate
+    if(log_scale==1){
+      log_odds_ratio=log(mu1.h/(1-mu1.h))-log(mu0.h/(1-mu0.h))
+      log_risk_ratio=log(mu1.h/mu0.h)
+      mean_diff=mu1.h-mu0.h
+    }
+    else{
+      log_odds_ratio=(mu1.h*(1-mu0.h))/((1-mu1.h)*mu0.h)
+      log_risk_ratio=mu1.h/mu0.h
+      mean_diff=mu1.h-mu0.h
+    }
     
     ##Follow Williamson Notations
     ##Delta Method Gradient Vector
-    K_risk=c(1/mu1.h,1/mu0.h)
-    K_odds=c(1/(mu1.h*(1-mu1.h)),1/(mu0.h*(1-mu0.h)))
-    K_diff=c(1,1)
+    ##Delta Method Gradient Vector
+    if (log_scale==1){
+      ##Delta Method Gradient Vector
+      K_risk=c(1/mu1.h,1/mu0.h)
+      K_odds=c(1/(mu1.h*(1-mu1.h)),1/(mu0.h*(1-mu0.h)))
+      K_diff=c(1,-1)
+    }
+    else{
+      K_risk=c(1/mu0.h,-mu1.h/mu0.h^2)
+      K_odds=c((1-mu0.h)/((1-mu1.h)^2*mu0.h),-mu1.h/((1-mu1.h)*mu0.h^2))
+      K_diff=c(1,-1)
+    }
     
     ##Asymptotic Variance formula by Williamson
     w1=mean(z.all/e.h)

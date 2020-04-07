@@ -141,6 +141,8 @@ res_unadj_6_res=Crude(y=y,z=Tr,W=W,binary=1)
 res_ipw_6_res=IPWC(y.all=y,z.all=Tr,W.all=W,q.all=0,binary=1)
 res_ow_6_res=OW(y=y,z=Tr,W=W,binary=1)
 res_lr_6_res=LR(y=y,z=Tr,W=X,binary=1,filter_numeric_error = F)
+##Log binomial, fitted 0 or 1, numerical error
+#res_lr_6_res=LR(y=y,z=Tr,W=X,binary=1,filter_numeric_error = F,logit_link=0)
 
 ##Mean Difference
 result_6_res_mean_diff=rbind(

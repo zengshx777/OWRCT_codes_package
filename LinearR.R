@@ -1,6 +1,6 @@
 library(sandwich)
 ###Linear Regression
-LR <- function(y, z, W,binary=0,filter_numeric_error=T){
+LR <- function(y, z, W,binary=0,filter_numeric_error=T,logit_link=1){
   ###Linear Regression with interaction
   ###center the covariate
   ###W do not include intercept
@@ -30,12 +30,22 @@ LR <- function(y, z, W,binary=0,filter_numeric_error=T){
     W=scale(W,scale=FALSE)
     if(filter_numeric_error){
       numerical_error=tryCatch({
-        lr_model=glm(y~z+W+W*z,family = binomial(link = "logit"))
+        if (logit_link==1){
+          lr_model=glm(y~z+W+W*z,family = binomial(link = "logit"))
+        }
+        else{
+          lr_model=glm(y~z+W+W*z,family = binomial(link = "log"))
+        }
       },warning=function(w){return(TRUE)
       })
     }
     else{
+      if (logit_link==1){
       lr_model=glm(y~z+W+W*z,family = binomial(link = "logit"))
+      }
+      else{
+        lr_model=glm(y~z+W+W*z,family = binomial(link = "log"))
+      }
       numerical_error=lr_model
     }
     ##Check model converge
@@ -48,7 +58,7 @@ LR <- function(y, z, W,binary=0,filter_numeric_error=T){
       
       n=length(z)
       
-      m1=predict.glm(lr_model,newdata=data.frame(z=rep(1,n),W=W), type="response")
+      m1=predict.glm(lr_model,newdata=data.frame(z=rep(1,n),W=W),type="response")
       m0=predict.glm(lr_model,newdata=data.frame(z=rep(0,n),W=W),type="response")
       
       ##Calculate Asympotic variance with Delta formula
@@ -61,7 +71,11 @@ LR <- function(y, z, W,binary=0,filter_numeric_error=T){
       
       #Sandwich Estimator
       Cov=vcovHC(lr_model, method="white1",type = "HC1")
+      if (logit_link==1){
       Mean.Matrix=rbind(c(m1*(1-m1)/n,rep(0,n)),c(rep(0,n),m0*(1-m0)/n))
+      }else{
+        Mean.Matrix=rbind(c(m1/n,rep(0,n)),c(rep(0,n),m0/n))
+      }
       if (ncol(Cov)!=ncol(X.m))
       {
         X.m=X.m[,1:ncol(Cov)]

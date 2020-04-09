@@ -56,7 +56,7 @@ treated_name=c("pooled_treatmentarm","rand_treatmentarm")
 
 ##Read data
 ##Due to confidential reason, we do not post the original datasets online
-##Available upon request and permission by the authors.
+##Available upon request and permission by the researchers from BestAir project.
 data.baseline=read.csv("bestair-baseline-dataset-0.3.0.csv")
 data.month6=read.csv("bestair-month6-dataset-0.3.0.csv")
 

@@ -203,7 +203,7 @@ abline(h=1,lty=2,lwd=2)
 
 par(mar = c(0,0,1,0))
 plot(1, type = "n", axes=FALSE, xlab="", ylab="")
-legend("top",inset=0,title="Relative efficiency to DIF", col=c("black","purple","red"),lwd=1.5,
+legend("top",inset=0,title="Relative efficiency to UNADJ", col=c("black","purple","red"),lwd=1.5,
        lty=1,pch=c(1,3,2),legend=c("IPW","LR","OW"),horiz=TRUE)
 
 
@@ -417,7 +417,7 @@ abline(h=1,lty=2,lwd=2)
 
 par(mar = c(0,0,1,0))
 plot(1, type = "n", axes=FALSE, xlab="", ylab="")
-legend("top",inset=0,title="Relative efficiency to DIF", col=c("black","purple","red"),lwd=1.5,
+legend("top",inset=0,title="Relative efficiency to UNADJ", col=c("black","purple","red"),lwd=1.5,
        lty=1,pch=c(1,3,2),legend=c("IPW","LR","OW"),horiz=TRUE)
 
 

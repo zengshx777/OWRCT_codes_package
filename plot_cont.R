@@ -1,6 +1,6 @@
 plot_size=2.5
 #setwd("C:/Users/Shuxi ZENG/Dropbox/Third Year/OW_Randomization/results_0327/cont")
-pdf("cont_MCSD.pdf",height=1.2*plot_size,width=4*plot_size)
+pdf("cont_MCSD.pdf",height=1.3*plot_size,width=4*plot_size)
 m <- matrix(c(1,2,3,4,5,5,5,5),nrow = 2,ncol = 4,byrow = TRUE)
 
 layout(mat = m,heights = c(0.5,0.1))
@@ -41,7 +41,7 @@ load(paste(h.degree,pt,mis.specified,"cont_result.RData",sep="_"))
 #pdf(paste(h.degree,pt,mis.specified,"cont_RMSE.pdf",sep="_"),height=plot_size,width=plot_size)
 plot(MC_SD[,1],(MC_SD[,2]/MC_SD[,3])^2,type='o',
      xlab="Sample size",lwd=2,
-     #ylab="Relative efficiency over DIF",
+     #ylab="Relative efficiency over UNADJ",
      ylab="",
      main="(b)",
      cex.lab=1.4,cex.main=2,
@@ -69,7 +69,7 @@ load(paste(h.degree,pt,mis.specified,"cont_result.RData",sep="_"))
 #pdf(paste(h.degree,pt,mis.specified,"cont_RMSE.pdf",sep="_"),height=plot_size,width=plot_size)
 plot(MC_SD[,1],MC_SD[,2]/MC_SD[,3],type='o',
      xlab="Sample size",lwd=2,
-     #ylab="Relative efficiency over DIF",
+     #ylab="Relative efficiency over UNADJ",
      ylab="",
      main="(c)",
      cex.lab=1.4,cex.main=2,
@@ -96,7 +96,7 @@ load(paste(h.degree,pt,mis.specified,"cont_result.RData",sep="_"))
 #pdf(paste(h.degree,pt,mis.specified,"cont_RMSE.pdf",sep="_"),height=plot_size,width=plot_size)
 plot(MC_SD[,1],(MC_SD[,2]/MC_SD[,3])^2,type='o',
      xlab="Sample size",lwd=2,
-     #ylab="Relative efficiency over DIF",
+     #ylab="Relative efficiency over UNADJ",
      ylab="",
      main="(d)",
      cex.lab=1.4,cex.main=2,
@@ -112,7 +112,7 @@ abline(h=1,lty=2,lwd=1.5)
 #        lty=1,pch=c(1,2,3,6),legend=c("IPW","OW","LR","DR"))
 par(mar = c(0,0,1,0))
 plot(1, type = "n", axes=FALSE, xlab="", ylab="")
-legend("top",inset=0,title="Relative efficiency to DIF", col=c("black","purple","red"),lwd=1.5,
+legend("top",inset=0,title="Relative efficiency to UNADJ", col=c("black","purple","red"),lwd=1.5,
        lty=1,pch=c(1,3,2),legend=c("IPW","LR","OW"),horiz=TRUE)
 
 dev.off()
@@ -142,9 +142,9 @@ dev.off()
 # #lines(CRATE[,1],CRATE[,6],type='o',col="blue",pch=6)
 # abline(h=0.95,lty=1.5)
 # # legend("bottomright",col=c("green","black","red","purple","blue"),
-# #        lty=1,pch=c(5,1,2,3,6),legend=c("DIF","IPW","OW","LR","DR"))
+# #        lty=1,pch=c(5,1,2,3,6),legend=c("UNADJ","IPW","OW","LR","DR"))
 # # legend("bottomright",col=c("blue","black","purple","red"),lwd=1.5,
-# #        lty=1,pch=c(4,1,3,2),legend=c("DIF","IPW","LR","OW"))
+# #        lty=1,pch=c(4,1,3,2),legend=c("UNADJ","IPW","LR","OW"))
 # 
 # 
 # h.degree=0.75
@@ -170,9 +170,9 @@ dev.off()
 # #lines(CRATE[,1],CRATE[,6],type='o',col="blue",pch=6)
 # abline(h=0.95,lty=1.5)
 # # legend("bottomright",col=c("green","black","red","purple","blue"),
-# #        lty=1,pch=c(5,1,2,3,6),legend=c("DIF","IPW","OW","LR","DR"))
+# #        lty=1,pch=c(5,1,2,3,6),legend=c("UNADJ","IPW","OW","LR","DR"))
 # # legend("bottomright",col=c("blue","black","purple","red"),lwd=1.5,
-# #        lty=1,pch=c(4,1,3,2),legend=c("DIF","IPW","LR","OW"))
+# #        lty=1,pch=c(4,1,3,2),legend=c("UNADJ","IPW","LR","OW"))
 # 
 # h.degree=0
 # pt=0.7
@@ -197,9 +197,9 @@ dev.off()
 # #lines(CRATE[,1],CRATE[,6],type='o',col="blue",pch=6)
 # abline(h=0.95,lty=1.5)
 # # legend("bottomright",col=c("green","black","red","purple","blue"),
-# #        lty=1,pch=c(5,1,2,3,6),legend=c("DIF","IPW","OW","LR","DR"))
+# #        lty=1,pch=c(5,1,2,3,6),legend=c("UNADJ","IPW","OW","LR","DR"))
 # # legend("bottomright",col=c("blue","black","purple","red"),lwd=1.5,
-# #        lty=1,pch=c(4,1,3,2),legend=c("DIF","IPW","LR","OW"))
+# #        lty=1,pch=c(4,1,3,2),legend=c("UNADJ","IPW","LR","OW"))
 # 
 # h.degree=0
 # pt=0.7
@@ -224,7 +224,7 @@ dev.off()
 # #lines(CRATE[,1],CRATE[,6],type='o',col="blue",pch=6)
 # abline(h=0.95,lty=1.5)
 # # legend("bottomright",col=c("green","black","red","purple","blue"),
-# #        lty=1,pch=c(5,1,2,3,6),legend=c("DIF","IPW","OW","LR","DR"))
+# #        lty=1,pch=c(5,1,2,3,6),legend=c("UNADJ","IPW","OW","LR","DR"))
 # legend("bottomright",col=c("blue","black","purple","red"),lwd=1.5,
-#        lty=1,pch=c(4,1,3,2),legend=c("DIF","IPW","LR","OW"))
+#        lty=1,pch=c(4,1,3,2),legend=c("UNADJ","IPW","LR","OW"))
 # dev.off()

@@ -1,7 +1,5 @@
 ##Double Robust
-##Require the installation of PSweight
-library(PSweight)
-DR <- function(y, z, W,binary=0,filter_numeric_error=T,logit_link=1){
+AIPW <- function(y, z, W,binary=0,filter_numeric_error=T,logit_link=1){
   ###PS model
   # estimate ps
   ###W do not include intercept
@@ -9,11 +7,13 @@ DR <- function(y, z, W,binary=0,filter_numeric_error=T,logit_link=1){
   e.h <- as.numeric(fit.ps$fitted.values)
   
   ##Calculate IPW weights
+  #w.h=(z*1/e.h)/(sum(z*1/e.h))+((1-z)*1/(1-e.h))/(sum((1-z)*1/(1-e.h)))
   w.h=z*1/e.h+(1-z)*1/(1-e.h)
   
   ###Linear Regression with interaction
   ###center the covariate
   W=scale(W,scale=FALSE)
+  
   if (binary==0){
   lr_model=lm(y~z+W+W*z)
   
@@ -67,66 +67,72 @@ DR <- function(y, z, W,binary=0,filter_numeric_error=T,logit_link=1){
       m1=predict.glm(lr_model,newdata=data.frame(z=rep(1,n),W=W),type="response")
       m0=predict.glm(lr_model,newdata=data.frame(z=rep(0,n),W=W),type="response")
       
-      ##Calculate Asympotic variance with Delta formula
-      X.matrix=model.matrix(lr_model)
-      X.0=X.matrix
-      X.0[,'z']=0
-      X.1=X.matrix
-      X.1[,'z']=1
-      X.m=rbind(X.1,X.0)
+      mu1=mean(z*y/e.h-(z-e.h)/e.h*m1)
+      mu0=mean(((1-z)*y)/(1-e.h)+(z-e.h)/(1-e.h)*m0)
       
-      #Sandwich Estimator
-      Cov=vcovHC(lr_model, method="white1",type = "HC1")
-      if (logit_link==1){
-        Mean.Matrix=rbind(c(m1*(1-m1)/n,rep(0,n)),c(rep(0,n),m0*(1-m0)/n))
-      }else{
-        Mean.Matrix=rbind(c(m1/n,rep(0,n)),c(rep(0,n),m0/n))
-      }
-      if (ncol(Cov)!=ncol(X.m))
-      {
-        X.m=X.m[,1:ncol(Cov)]
-      }
-      ##Covariance Matrix of m1 and m0
-      Cov.m=Mean.Matrix%*%X.m%*%Cov%*%t(X.m)%*%t(Mean.Matrix)
-      
-      #log_odds_ratio=mean(log(m1/(1-m1)))-mean(log(m0/(1-m0)))
-      mu1=mean(m1)
-      mu0=mean(m0)
-      if(log_scale==1){
-        log_odds_ratio=log(mu1/(1-mu1))-log(mu0/(1-mu0))
-        log_risk_ratio=log(mu1/mu0)
-        mean_diff=mu1-mu0
-      }
-      else{
-        log_odds_ratio=(mu1*(1-mu0))/((1-mu1)*mu0)
-        log_risk_ratio=mu1/mu0
-        mean_diff=mu1-mu0
-      }
-      
-      ##Delta Method Gradient Vector
-      if (log_scale==1){
-        grad_risk=c(1/mu1,-1/mu0)
-        grad_odds=c(1/(mu1*(1-mu1)),-1/(mu0*(1-mu0)))
-        grad_diff=c(1,-1)
-      }
-      else{
-        grad_risk=c(1/mu0,-mu1/mu0^2)
-        grad_odds=c((1-mu0)/((1-mu1)^2*mu0),-mu1/((1-mu1)*mu0^2))
-        grad_diff=c(1,-1)
-      }
-      
-      ##Calculate Asymptotic Variance
-      v_risk=t(grad_risk)%*%Cov.m%*%grad_risk
-      v_odds=t(grad_odds)%*%Cov.m%*%grad_odds
-      v_diff=t(grad_diff)%*%Cov.m%*%grad_diff
-      
-      se_risk=sqrt(v_risk)
-      se_odds=sqrt(v_odds)
-      se_diff=sqrt(v_diff)
-      
+      mean_diff=mu1-mu0
+      log_risk_ratio=log(mu1/mu0)
+      log_odds_ratio=log(mu1/(1-mu1))-log(mu0/(1-mu0))
+      # ##Calculate Asympotic variance with Delta formula
+      # X.matrix=model.matrix(lr_model)
+      # X.0=X.matrix
+      # X.0[,'z']=0
+      # X.1=X.matrix
+      # X.1[,'z']=1
+      # X.m=rbind(X.1,X.0)
+      # 
+      # #Sandwich Estimator
+      # Cov=vcovHC(lr_model, method="white1",type = "HC1")
+      # if (logit_link==1){
+      #   Mean.Matrix=rbind(c(m1*(1-m1)/n,rep(0,n)),c(rep(0,n),m0*(1-m0)/n))
+      # }else{
+      #   Mean.Matrix=rbind(c(m1/n,rep(0,n)),c(rep(0,n),m0/n))
+      # }
+      # if (ncol(Cov)!=ncol(X.m))
+      # {
+      #   X.m=X.m[,1:ncol(Cov)]
+      # }
+      # ##Covariance Matrix of m1 and m0
+      # Cov.m=Mean.Matrix%*%X.m%*%Cov%*%t(X.m)%*%t(Mean.Matrix)
+      # 
+      # #log_odds_ratio=mean(log(m1/(1-m1)))-mean(log(m0/(1-m0)))
+      # mu1=mean(m1)
+      # mu0=mean(m0)
+      # if(log_scale==1){
+      #   log_odds_ratio=log(mu1/(1-mu1))-log(mu0/(1-mu0))
+      #   log_risk_ratio=log(mu1/mu0)
+      #   mean_diff=mu1-mu0
+      # }
+      # else{
+      #   log_odds_ratio=(mu1*(1-mu0))/((1-mu1)*mu0)
+      #   log_risk_ratio=mu1/mu0
+      #   mean_diff=mu1-mu0
+      # }
+      # 
+      # ##Delta Method Gradient Vector
+      # if (log_scale==1){
+      #   grad_risk=c(1/mu1,-1/mu0)
+      #   grad_odds=c(1/(mu1*(1-mu1)),-1/(mu0*(1-mu0)))
+      #   grad_diff=c(1,-1)
+      # }
+      # else{
+      #   grad_risk=c(1/mu0,-mu1/mu0^2)
+      #   grad_odds=c((1-mu0)/((1-mu1)^2*mu0),-mu1/((1-mu1)*mu0^2))
+      #   grad_diff=c(1,-1)
+      # }
+      # 
+      # ##Calculate Asymptotic Variance
+      # v_risk=t(grad_risk)%*%Cov.m%*%grad_risk
+      # v_odds=t(grad_odds)%*%Cov.m%*%grad_odds
+      # v_diff=t(grad_diff)%*%Cov.m%*%grad_diff
+      # 
+      # se_risk=sqrt(v_risk)
+      # se_odds=sqrt(v_odds)
+      # se_diff=sqrt(v_diff)
+      # 
       return(list(mean_diff=mean_diff,log_odds_ratio=log_odds_ratio,
-                  log_risk_ratio=log_risk_ratio,se_risk_ratio=se_risk,
-                  se_odds_ratio=se_odds,se_mean_diff=se_diff))
+                  log_risk_ratio=log_risk_ratio,se_risk_ratio=NA,
+                  se_odds_ratio=NA,se_mean_diff=NA))
       
     }
   

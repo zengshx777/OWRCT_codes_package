@@ -10,7 +10,7 @@ rct.data=data.frame(y=y,z=z,W=W)
 
 if (binary==0){
 aipw<-PSweight(weight = 'ATE',ps.formula = form.ps,yname = 'y',data=rct.data,augmentation = T,out.formula = form.out,family = 'gaussian')
-aipw_summary=summary(aipw,type='DIF',contrast=c(-1,1))
+invisible(capture.output(aipw_summary<-summary(aipw,type='DIF',contrast=c(-1,1))))
 est=aipw_summary$inference[1]
 se=aipw_summary$inference[2]
 return(list(tau=est, se=se))
@@ -31,10 +31,10 @@ return(list(tau=est, se=se))
                 log_risk_ratio=NA,se_risk_ratio=NA,
                 se_odds_ratio=NA,se_mean_diff=NA))
   }else{
-  aipw_summary_rd=summary(aipw,type='DIF',contrast=c(-1,1))
-  aipw_summary_rr=summary(aipw,type='RR',contrast=c(-1,1))
-  aipw_summary_or=summary(aipw,type='OR',contrast=c(-1,1))
-  
+  invisible(capture.output(aipw_summary_rd<-summary(aipw,type='DIF',contrast=c(-1,1))))
+  invisible(capture.output(aipw_summary_rr<-summary(aipw,type='RR',contrast=c(-1,1))))
+  invisible(capture.output(aipw_summary_or<-summary(aipw,type='OR',contrast=c(-1,1))))
+
   
   ##Transform back to Log
   mean_diff=aipw_summary_rd$inference[1]

@@ -66,8 +66,8 @@ BIAS_RISK=NULL
 NON_CONVER=NULL
 
 
-n.grid=c(seq(50,200,by=10),500)
-#n.grid=c(50,100,200,500)
+#n.grid=c(seq(50,200,by=10),500)
+n.grid=c(50,100,200,500)
 
 
 for (n in n.grid){

@@ -1,6 +1,6 @@
 #!/bin/bash
 mkdir cont
-mkdir bin
+mkdir binary
 
 R CMD BATCH --vanilla '--args h.degree=0 pt=0.5 mis.specified=0 rand.seed=1' Main_RCT_Continuous.R cont_1.out &
 R CMD BATCH --vanilla '--args h.degree=0.75 pt=0.5 mis.specified=0 rand.seed=2' Main_RCT_Continuous.R cont_2.out &

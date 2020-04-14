@@ -52,7 +52,7 @@ EST_SD=NULL
 CRATE=NULL
 BIAS=NULL
 
-n.grid=seq(50,200,by=10)
+n.grid=c(seq(50,200,by=10),500)
 
 for (n in n.grid){
   

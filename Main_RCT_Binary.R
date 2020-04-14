@@ -22,6 +22,7 @@ source("Crude.R")
 source("IPWC.R")
 source("OW.R")
 source("LinearR.R")
+source("PS_AIPW.R")
 #source("DoubleRobust.R")
 
 ###Parameter fixed
@@ -32,16 +33,16 @@ gamma<-0
 ##signal_level: Control the explain power of feature, R^2
 signal_level=1
 logit=1
-#Prob of being treated
-#pt=0.5
-#Rare degree: 0(50%),0.8(68%),3 (95%)
-#rare.degree=0
-##Control whether the model is correctly specified
-##If correctly, then use linear outcome model
-##If not, then add quadratic interaction term
-#mis.specified=0
-##Control the degree of heterogeneout treatment effect 
-#h.degree=0.3
+# #Prob of being treated
+# pt=0.5
+# #Rare degree: 0(50%),0.8(68%),3 (95%)
+# rare.degree=0
+# ##Control whether the model is correctly specified
+# ##If correctly, then use linear outcome model
+# ##If not, then add quadratic interaction term
+# mis.specified=0
+# ##Control the degree of heterogeneout treatment effect 
+# h.degree=0.3
 
 ##Store Results
 RMSE_DIFF=NULL
@@ -64,19 +65,21 @@ BIAS_RISK=NULL
 
 NON_CONVER=NULL
 
-n.grid=seq(50,200,by=10)
+
+n.grid=c(seq(50,200,by=10),500)
+#n.grid=c(50,100,200,500)
 
 
 for (n in n.grid){
   
-  EST_DIFF<-SE_DIFF<-matrix(NA,nsim,4)
-  colnames(EST_DIFF)<-colnames(SE_DIFF)<-c("UNADJ","IPW","OW","LR")
+  EST_DIFF<-SE_DIFF<-matrix(NA,nsim,5)
+  colnames(EST_DIFF)<-colnames(SE_DIFF)<-c("UNADJ","IPW","OW","LR","AIPW")
   
-  EST_RISK<-SE_RISK<-matrix(NA,nsim,4)
-  colnames(EST_RISK)<-colnames(SE_RISK)<-c("UNADJ","IPW","OW","LR")
+  EST_RISK<-SE_RISK<-matrix(NA,nsim,5)
+  colnames(EST_RISK)<-colnames(SE_RISK)<-c("UNADJ","IPW","OW","LR","AIPW")
   
-  EST_ODDS<-SE_ODDS<-matrix(NA,nsim,4)
-  colnames(EST_ODDS)<-colnames(SE_ODDS)<-c("UNADJ","IPW","OW","LR")
+  EST_ODDS<-SE_ODDS<-matrix(NA,nsim,5)
+  colnames(EST_ODDS)<-colnames(SE_ODDS)<-c("UNADJ","IPW","OW","LR","AIPW")
   
   ##True Values
   true.p.1=numeric(nsim)
@@ -183,12 +186,17 @@ for (n in n.grid){
     SE_RISK[i,4]<-res.LR$se_risk_ratio
     SE_ODDS[i,4]<-res.LR$se_odds_ratio
     
-    #DR
+    #AIPW 
     #Supply the one without intercept
-    #Not supported binary currently
-    # res.DR <- DR(y=y, z=z, W=x)
-    # EST[i,5] <- res.DR$tau
-    # SE[i,5] <- res.DR$se
+    res.AIPW <- AIPW(y=y, z=z, W=x,binary=1)
+    #NA happen if not converged
+    EST_DIFF[i,5] <- res.AIPW$mean_diff
+    EST_RISK[i,5] <- res.AIPW$log_risk_ratio
+    EST_ODDS[i,5] <- res.AIPW$log_odds_ratio
+    
+    SE_DIFF[i,5]<-res.AIPW$se_mean_diff
+    SE_RISK[i,5]<-res.AIPW$se_risk_ratio
+    SE_ODDS[i,5]<-res.AIPW$se_odds_ratio
     
     
     if(i%%500==0)print(i)
@@ -197,7 +205,7 @@ for (n in n.grid){
   
   
   # # Results
-  complete.id=which(apply(EST_DIFF,1,FUN=function(x){all(!is.na(x))}))
+  complete.id=which(apply(EST_DIFF,1,FUN=function(x){all(!is.na(x[1:4]))}))
   
   ##Use MC approximate true parameter
   true_diff=mean(true.p.1)-mean(true.p.0)
@@ -234,9 +242,9 @@ for (n in n.grid){
   CRATE_ODDS=rbind(CRATE_ODDS,c(n,colMeans(matrix(true_odds, nrow(EST_ODDS), ncol(EST_ODDS)) <= EST_ODDS + qnorm(0.975)*SE_ODDS & 
                                              matrix(true_odds, nrow(EST_ODDS), ncol(EST_ODDS)) >= EST_ODDS - qnorm(0.975)*SE_ODDS,na.rm=T)))
   
-  BIAS_DIFF=rbind(BIAS_DIFF,c(n,abs(colMeans(EST_DIFF[complete.id,])-true_diff)))
-  BIAS_RISK=rbind(BIAS_RISK,c(n,abs(colMeans(EST_RISK[complete.id,])-true_risk)))
-  BIAS_ODDS=rbind(BIAS_ODDS,c(n,abs(colMeans(EST_ODDS[complete.id,])-true_odds)))
+  BIAS_DIFF=rbind(BIAS_DIFF,c(n,abs(colMeans(EST_DIFF[complete.id,],na.rm=T)-true_diff)))
+  BIAS_RISK=rbind(BIAS_RISK,c(n,abs(colMeans(EST_RISK[complete.id,],na.rm=T)-true_risk)))
+  BIAS_ODDS=rbind(BIAS_ODDS,c(n,abs(colMeans(EST_ODDS[complete.id,],na.rm=T)-true_odds)))
   #Non convergence time
   NON_CONVER=rbind(NON_CONVER,c(n,nsim-length(complete.id)))
   

@@ -23,6 +23,7 @@ source("Crude.R")
 source("IPWC.R")
 source("OW.R")
 source("LinearR.R")
+source("PS_AIPW.R")
 #source("DoubleRobust.R")
 
 ###Parameter fixed
@@ -51,12 +52,12 @@ EST_SD=NULL
 CRATE=NULL
 BIAS=NULL
 
-n.grid=seq(50,200,by=10)
+n.grid=c(seq(50,200,by=10),500)
 
 for (n in n.grid){
   
-  EST<-SE<-COVER<-matrix(NA,nsim,4)
-  colnames(EST)<-colnames(SE)<-colnames(COVER)<-c("UNADJ","IPW","OW","LR")
+  EST<-SE<-COVER<-matrix(NA,nsim,5)
+  colnames(EST)<-colnames(SE)<-colnames(COVER)<-c("UNADJ","IPW","OW","LR","AIPW")
   
   for(i in 1:nsim){
     x<-rmvnorm(n,rep(0,p),diag(1,p))
@@ -119,12 +120,13 @@ for (n in n.grid){
     COVER[i,4]<-(gamma<EST[i,4]+qt(0.975,n-(p+1)*2)*SE[i,4])&(gamma>EST[i,4]-qt(0.975,n-(p+1)*2)*SE[i,4])
     #COVER[i,4]<-(gamma_finite<EST[i,4]+qt(0.975,n-(p+1)*2)*SE[i,4])&(gamma_finite>EST[i,4]-qt(0.975,n-(p+1)*2)*SE[i,4])
     
-    #DR
+    #AIPW
     #Supply the one without intercept
-    # res.DR <- DR(y=y, z=z, W=x)
-    # EST[i,5] <- res.DR$tau
-    # SE[i,5] <- res.DR$se
-    # 
+    res.AIPW <- AIPW(y=y, z=z, W=x)
+    EST[i,5] <- res.AIPW$tau
+    SE[i,5] <- res.AIPW$se
+    COVER[i,5] <- (gamma<EST[i,5]+qnorm(0.975)*SE[i,5])&(gamma>EST[i,5]-qnorm(0.975)*SE[i,5])
+    
     
     if(i%%500==0)print(i)
   }

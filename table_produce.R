@@ -77,7 +77,6 @@ rare.degree=0
 h.degree=0
 pt=0.5
 mis.specified=0
-sample_index=c(1,2,3,4)
 load(paste(rare.degree,h.degree,pt,mis.specified,"binary_result.RData",sep="_"))
 
 results_two=helper(results_two,BIAS_DIFF,MC_SD_DIFF,EST_SD_DIFF,CRATE_DIFF,sample_index)
@@ -164,7 +163,7 @@ results_two=helper(results_two,BIAS_DIFF,MC_SD_DIFF,EST_SD_DIFF,CRATE_DIFF,sampl
 results_two=helper(results_two,BIAS_RISK,MC_SD_RISK,EST_SD_RISK,CRATE_RISK,sample_index)
 results_two=helper(results_two,BIAS_ODDS,MC_SD_ODDS,EST_SD_ODDS,CRATE_ODDS,sample_index)
 
-#print(xtable(cbind(123,results_two),digits=c(0,0,0,rep(3,12))),include.rownames = F)
+#print(xtable(cbind(123456,results_two),digits=c(0,0,0,rep(3,12))),include.rownames = F)
 print(xtable(results_two,digits=c(0,0,rep(3,12))),include.rownames = F)
 
 

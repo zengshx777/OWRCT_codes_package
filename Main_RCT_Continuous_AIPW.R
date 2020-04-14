@@ -1,11 +1,18 @@
 #h.degree,pt,mis.specified
 rm(list=ls())
+args=commandArgs(trailingOnly = TRUE)
+if(length(args)==0){
+  print("No arguments supplied.")
+}else{
+  for(i in 1:length(args)){
+    eval(parse(text=args[[i]]))
+  }
+}
 
-
-h.degree=0
-pt=0.5
-mis.specified=0
-rand.seed=6
+# h.degree=0 
+# pt=0.7 
+# mis.specified=1
+# rand.seed=6
 set.seed(rand.seed)
 
 library(mvtnorm)
@@ -45,13 +52,13 @@ EST_SD=NULL
 CRATE=NULL
 BIAS=NULL
 
-n.grid=seq(50,200,by=10)
-#n.grid=c(1000,2000,5000)
+n.grid=c(seq(50,200,by=10),500)
 
 for (n in n.grid){
   
   EST<-SE<-COVER<-matrix(NA,nsim,5)
   colnames(EST)<-colnames(SE)<-colnames(COVER)<-c("UNADJ","IPW","OW","LR","AIPW")
+  
   for(i in 1:nsim){
     x<-rmvnorm(n,rep(0,p),diag(1,p))
     z<-rbinom(n,1,pt)
@@ -119,7 +126,7 @@ for (n in n.grid){
     EST[i,5] <- res.AIPW$tau
     SE[i,5] <- res.AIPW$se
     COVER[i,5] <- (gamma<EST[i,5]+qnorm(0.975)*SE[i,5])&(gamma>EST[i,5]-qnorm(0.975)*SE[i,5])
-    # 
+    
     
     if(i%%500==0)print(i)
   }
@@ -139,7 +146,7 @@ for (n in n.grid){
 # apply(EST,2,sd)
 # colMeans(matrix(gamma, nrow(EST), ncol(EST)) <= EST + qnorm(0.975)*SE & 
 #            matrix(gamma, nrow(EST), ncol(EST)) >= EST - qnorm(0.975)*SE)
-# setwd("cont/")
-# save(RMSE,MC_SD,EST_SD,CRATE,BIAS,file=paste(h.degree,pt,mis.specified,"cont_result.RData",sep="_"))
+setwd("cont/")
+save(RMSE,MC_SD,EST_SD,CRATE,BIAS,file=paste(h.degree,pt,mis.specified,"cont_result.RData",sep="_"))
 # setwd("..")
 # source("plot_results_cont.R")

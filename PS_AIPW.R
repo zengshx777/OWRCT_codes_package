@@ -3,10 +3,17 @@ library(PSweight)
 
 AIPW<-function(y, z, W,binary=0,filter_numeric_error=T){
   p=ncol(W)
+  if(is.null(colnames(W))){
   form.ps <- as.formula(paste("z","~",paste(paste('W',1:p,sep="."),collapse = "+"),sep=""))
   # Outcome model
   form.out<- as.formula(paste("y","~",paste(paste('W',1:p,sep="."),collapse = "+"),sep=""))
   rct.data=data.frame(y=y,z=z,W=W)
+  }else{
+    form.ps <- as.formula(paste("z","~",paste(colnames(W),collapse = "+"),sep=""))
+    form.out<- as.formula(paste("y","~",paste(colnames(W),collapse = "+"),sep=""))
+    rct.data=as.data.frame(cbind(y,z,W))
+  }
+  
   
   if (binary==0){
     aipw<-PSweight(weight = 'ATE',ps.formula = form.ps,yname = 'y',data=rct.data,augmentation = T,out.formula = form.out,family = 'gaussian')

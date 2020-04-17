@@ -1,6 +1,5 @@
 plot_size=2.5
 n_index=1:16
-#setwd("C:/Users/Shuxi ZENG/Dropbox/Third Year/OW_Randomization/results_0327/cont")
 pdf("cont_MCSD.pdf",height=1.3*plot_size,width=4*plot_size)
 m <- matrix(c(1,2,3,4,5,5,5,5),nrow = 2,ncol = 4,byrow = TRUE)
 

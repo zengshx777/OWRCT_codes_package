@@ -1,5 +1,4 @@
 plot_size=2.3
-#setwd("C:/Users/Shuxi ZENG/Dropbox/Third Year/OW_Randomization/results_0327/binary")
 n_index=c(1:16)
 pdf("bin_MCSD.pdf",height=2.8*plot_size,width=4*plot_size)
 

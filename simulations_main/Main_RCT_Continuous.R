@@ -17,8 +17,6 @@ set.seed(rand.seed)
 
 library(mvtnorm)
 
-#setwd("C:/Users/Shuxi ZENG/Dropbox/Third Year/OW_Randomization/Code")
-
 source("Crude.R")
 source("IPWC.R")
 source("OW.R")

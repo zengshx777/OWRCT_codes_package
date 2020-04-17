@@ -32,7 +32,7 @@ baseline_covariates_name=c("age","race_1","race_2",
                            "avgseatedpulse",
                            "ahi_primary","ess_total_base")
 
-# baseline_covariates_name=c("age","race_1","race_2",
+# baseline_covariates_name=c("age",
 #                            "bmi","gender",
 #                            "avgseatedsystolic",
 #                            "ahi_primary","ess_total_base")
@@ -60,6 +60,8 @@ treated_name=c("pooled_treatmentarm","rand_treatmentarm")
 ##Available upon request and permission by the researchers from BestAir project.
 data.baseline=read.csv("bestair-baseline-dataset-0.3.0.csv")
 data.follow=read.csv("bestair-month6-dataset-0.3.0.csv")
+#data.follow=read.csv("bestair-month12-dataset-0.3.0.csv")
+
 
 ##Rename/Create variable
 data.baseline$ess_total_base=data.baseline$ess_total

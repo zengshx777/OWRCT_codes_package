@@ -1,6 +1,5 @@
 # OW_RCT
  Codebase for OW-RCT paper.
- Please see Web Appendix C for reproducing the results.
  
 **1.simulations_main** contains the functions implementing various methods and scripts to run continuous and binary outcomes simulations.
 

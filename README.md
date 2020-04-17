@@ -6,7 +6,7 @@
 
 **2.simulations_summary** contains the scripts to reproduce the Figures and Tables in the main text.
  
-**read_data** contains the script to reproduce results for real data (data source upon requested).
+**3.read_data** contains the script to reproduce results for real data (data source upon requested).
 
 
  Please see Web Appendix D for reproducing the results.

@@ -63,9 +63,9 @@ LR <- function(y, z, W,binary=0,filter_numeric_error=T,logit_link=1,log_scale=1)
       
       ##Calculate Asympotic variance with Delta formula
       z=rep(0,n)
-      X.0=model.matrix.default(Y~Z+W+Z*W,data.frame(z,W))
+      X.0=model.matrix.default(Y~z+W+z*W,data.frame(z,W))
       z=rep(1,n)
-      X.1=model.matrix.default(Y~Z+W+Z*W,data.frame(z,W))
+      X.1=model.matrix.default(Y~z+W+z*W,data.frame(z,W))
       # X.0=X.matrix
       # X.0[,'z']=0
       # X.1=X.matrix

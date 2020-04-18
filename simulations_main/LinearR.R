@@ -62,11 +62,14 @@ LR <- function(y, z, W,binary=0,filter_numeric_error=T,logit_link=1,log_scale=1)
       m0=predict.glm(lr_model,newdata=data.frame(z=rep(0,n),W=W),type="response")
       
       ##Calculate Asympotic variance with Delta formula
-      X.matrix=model.matrix(lr_model)
-      X.0=X.matrix
-      X.0[,'z']=0
-      X.1=X.matrix
-      X.1[,'z']=1
+      z=rep(0,n)
+      X.0=model.matrix.default(Y~Z+W+Z*W,data.frame(z,W))
+      z=rep(1,n)
+      X.1=model.matrix.default(Y~Z+W+Z*W,data.frame(z,W))
+      # X.0=X.matrix
+      # X.0[,'z']=0
+      # X.1=X.matrix
+      # X.1[,'z']=1
       X.m=rbind(X.1,X.0)
       
       #Sandwich Estimator

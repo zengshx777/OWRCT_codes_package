@@ -66,10 +66,6 @@ LR <- function(y, z, W,binary=0,filter_numeric_error=T,logit_link=1,log_scale=1)
       X.0=model.matrix.default(Y~z+W+z*W,data.frame(z,W))
       z=rep(1,n)
       X.1=model.matrix.default(Y~z+W+z*W,data.frame(z,W))
-      # X.0=X.matrix
-      # X.0[,'z']=0
-      # X.1=X.matrix
-      # X.1[,'z']=1
       X.m=rbind(X.1,X.0)
       
       #Sandwich Estimator

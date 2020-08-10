@@ -20,10 +20,10 @@ plot(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0.5,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch=15,lwd=1.5)
+lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,4])^2,type='o',col="red",pch=19,lwd=1.5)
+lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,5])^2,type='o',col="purple",pch=17,lwd=1.5)
+# lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 par(mar = c(4, 4.5, 2, 1))
@@ -35,10 +35,10 @@ plot(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch=15,lwd=1.5)
+lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,4])^2,type='o',col="red",pch=19,lwd=1.5)
+lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,5])^2,type='o',col="purple",pch=17,lwd=1.5)
+# lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 par(mar = c(4, 4.5, 2, 1))
@@ -50,10 +50,10 @@ plot(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch=15,lwd=1.5)
+lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,4])^2,type='o',col="red",pch=19,lwd=1.5)
+lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,5])^2,type='o',col="purple",pch=17,lwd=1.5)
+# lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 
@@ -74,10 +74,10 @@ plot(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0.5,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch=15,lwd=1.5)
+lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,4])^2,type='o',col="red",pch=19,lwd=1.5)
+lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,5])^2,type='o',col="purple",pch=17,lwd=1.5)
+# lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 par(mar = c(4, 4.5, 2, 1))
@@ -89,10 +89,10 @@ plot(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch=15,lwd=1.5)
+lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,4])^2,type='o',col="red",pch=19,lwd=1.5)
+lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,5])^2,type='o',col="purple",pch=17,lwd=1.5)
+# lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 par(mar = c(4, 4.5, 2, 1))
@@ -104,10 +104,10 @@ plot(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch=15,lwd=1.5)
+lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,4])^2,type='o',col="red",pch=19,lwd=1.5)
+lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,5])^2,type='o',col="purple",pch=17,lwd=1.5)
+# lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 
@@ -126,10 +126,10 @@ plot(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0.5,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch=15,lwd=1.5)
+lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,4])^2,type='o',col="red",pch=19,lwd=1.5)
+lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,5])^2,type='o',col="purple",pch=17,lwd=1.5)
+# lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 par(mar = c(4, 4.5, 2, 1))
@@ -141,10 +141,10 @@ plot(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch=15,lwd=1.5)
+lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,4])^2,type='o',col="red",pch=19,lwd=1.5)
+lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,5])^2,type='o',col="purple",pch=17,lwd=1.5)
+# lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 par(mar = c(4, 4.5, 2, 1))
@@ -156,10 +156,10 @@ plot(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch=15,lwd=1.5)
+lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,4])^2,type='o',col="red",pch=19,lwd=1.5)
+lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,5])^2,type='o',col="purple",pch=17,lwd=1.5)
+# lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 
@@ -178,10 +178,10 @@ plot(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0.5,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch = 15,lwd=1.5)
+lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,4])^2,type='o',col="red",pch = 16,lwd=1.5)
+lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,5])^2,type='o',col="purple",pch = 17,lwd=1.5)
+# lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 par(mar = c(4, 4.5, 2, 1))
@@ -193,10 +193,10 @@ plot(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch = 15,lwd=1.5)
+lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,4])^2,type='o',col="red",pch = 16,lwd=1.5)
+lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,5])^2,type='o',col="purple",pch = 17,lwd=1.5)
+# lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 par(mar = c(4, 4.5, 2, 1))
@@ -208,17 +208,17 @@ plot(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch = 15,lwd=1.5)
+lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,4])^2,type='o',col="red",pch = 16,lwd=1.5)
+lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,5])^2,type='o',col="purple",pch = 17,lwd=1.5)
+# lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 
 par(mar = c(0,0,1,0))
 plot(1, type = "n", axes=FALSE, xlab="", ylab="")
-legend("top",inset=0,title="Relative efficiency to UNADJ", col=c("black","purple","blue","red"),lwd=1.5,
-       lty=1,pch=c(1,3,6,2),legend=c("IPW","LR","AIPW","OW"),horiz=TRUE)
+legend("top",inset=0,title="Relative efficiency to UNADJ", col=c("black","purple","red"),lwd=1.5,
+       lty=1,pch=c(15,17,19),legend=c("IPW","LR","OW"),horiz=TRUE)
 
 
 dev.off()
@@ -250,10 +250,10 @@ plot(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0.5,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch = 15,lwd=1.5)
+lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,4])^2,type='o',col="red",pch = 16,lwd=1.5)
+lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,5])^2,type='o',col="purple",pch = 17,lwd=1.5)
+# lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 par(mar = c(4, 4.5, 2, 1))
@@ -265,10 +265,10 @@ plot(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch = 15,lwd=1.5)
+lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,4])^2,type='o',col="red",pch = 16,lwd=1.5)
+lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,5])^2,type='o',col="purple",pch = 17,lwd=1.5)
+# lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 par(mar = c(4, 4.5, 2, 1))
@@ -280,10 +280,10 @@ plot(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch = 15,lwd=1.5)
+lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,4])^2,type='o',col="red",pch = 16,lwd=1.5)
+lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,5])^2,type='o',col="purple",pch = 17,lwd=1.5)
+# lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 
@@ -303,10 +303,10 @@ plot(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0.5,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch = 15,lwd=1.5)
+lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,4])^2,type='o',col="red",pch = 16,lwd=1.5)
+lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,5])^2,type='o',col="purple",pch = 17,lwd=1.5)
+# lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 par(mar = c(4, 4.5, 2, 1))
@@ -318,10 +318,10 @@ plot(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch = 15,lwd=1.5)
+lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,4])^2,type='o',col="red",pch = 16,lwd=1.5)
+lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,5])^2,type='o',col="purple",pch = 17,lwd=1.5)
+# lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 par(mar = c(4, 4.5, 2, 1))
@@ -333,10 +333,10 @@ plot(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch = 15,lwd=1.5)
+lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,4])^2,type='o',col="red",pch = 16,lwd=1.5)
+lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,5])^2,type='o',col="purple",pch = 17,lwd=1.5)
+# lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 
@@ -355,10 +355,10 @@ plot(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0.5,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch = 15,lwd=1.5)
+lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,4])^2,type='o',col="red",pch = 16,lwd=1.5)
+lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,5])^2,type='o',col="purple",pch = 17,lwd=1.5)
+# lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 par(mar = c(4, 4.5, 2, 1))
@@ -370,10 +370,10 @@ plot(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch = 15,lwd=1.5)
+lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,4])^2,type='o',col="red",pch = 16,lwd=1.5)
+lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,5])^2,type='o',col="purple",pch = 17,lwd=1.5)
+# lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 par(mar = c(4, 4.5, 2, 1))
@@ -385,10 +385,10 @@ plot(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch = 15,lwd=1.5)
+lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,4])^2,type='o',col="red",pch = 16,lwd=1.5)
+lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,5])^2,type='o',col="purple",pch = 17,lwd=1.5)
+# lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 h.degree=0
@@ -406,10 +406,10 @@ plot(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, risk difference, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0.5,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch = 15,lwd=1.5)
+lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,4])^2,type='o',col="red",pch = 16,lwd=1.5)
+lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,5])^2,type='o',col="purple",pch = 17,lwd=1.5)
+# lines(MC_SD_DIFF[n_index,1],(MC_SD_DIFF[n_index,2]/MC_SD_DIFF[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 par(mar = c(4, 4.5, 2, 1))
@@ -421,10 +421,10 @@ plot(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, log risk ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch = 15,lwd=1.5)
+lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,4])^2,type='o',col="red",pch = 16,lwd=1.5)
+lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,5])^2,type='o',col="purple",pch = 17,lwd=1.5)
+# lines(MC_SD_RISK[n_index,1],(MC_SD_RISK[n_index,2]/MC_SD_RISK[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 par(mar = c(4, 4.5, 2, 1))
@@ -436,17 +436,17 @@ plot(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,3])^2,type=
      # main=substitute(paste("Standard deviation, log odds ratio, ",u,"=",rare,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(rare=round(1/(1+exp(-rare.degree)),2),h.degree=h.degree,s_string=s_string)),
      ylim=c(0,1.6),cex.main=2,cex.lab=1.5,
-     col="black",pch=1,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,4])^2,type='o',col="red",pch=2,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,5])^2,type='o',col="purple",pch=3,lwd=1.5)
-lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
+     col="black",pch = 15,lwd=1.5)
+lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,4])^2,type='o',col="red",pch = 16,lwd=1.5)
+lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,5])^2,type='o',col="purple",pch = 17,lwd=1.5)
+# lines(MC_SD_ODDS[n_index,1],(MC_SD_ODDS[n_index,2]/MC_SD_ODDS[n_index,6])^2,type='o',col="blue",pch=6,lwd=1.5)
 abline(h=1,lty=2,lwd=1.5)
 
 
 par(mar = c(0,0,1,0))
 plot(1, type = "n", axes=FALSE, xlab="", ylab="")
-legend("top",inset=0,title="Relative efficiency to UNADJ", col=c("black","purple","blue","red"),lwd=1.5,
-       lty=1,pch=c(1,3,6,2),legend=c("IPW","LR","AIPW","OW"),horiz=TRUE)
+legend("top",inset=0,title="Relative efficiency to UNADJ", col=c("black","purple","red"),lwd=1.5,
+       lty=1,pch=c(15,17,19),legend=c("IPW","LR","OW"),horiz=TRUE)
 
 
 dev.off()

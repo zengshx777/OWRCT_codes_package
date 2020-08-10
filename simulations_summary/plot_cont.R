@@ -21,10 +21,10 @@ plot(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,3])^2,type='o',
      #                 list(pt=pt,h.degree=h.degree,s_string=s_string)),
      #ylim=range(MC_SD[n_index,2]/MC_SD[n_index,3],MC_SD[n_index,2]/MC_SD[n_index,4],MC_SD[n_index,2]/MC_SD[n_index,5],MC_SD[n_index,2]/MC_SD[n_index,6]),
      ylim=c(0,4),
-     col="black",pch=1)
-lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,4])^2,type='o',col="red",lwd=1.5,pch=2)
-lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,5])^2,type='o',col="purple",lwd=1.5,pch=3)
-lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,6])^2,type='o',col="blue",lwd=1.5,pch=3)
+     col="black",pch=15)
+lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,4])^2,type='o',col="red",lwd=1.5,pch=19)
+lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,5])^2,type='o',col="purple",lwd=1.5,pch=17)
+# lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,6])^2,type='o',col="blue",lwd=1.5,pch=3)
 # lines(MC_SD[n_index,1],MC_SD[n_index,2]/MC_SD[n_index,6],type='o',col="blue",pch=6)
 # legend("bottomright",col=c("black","red","purple","blue"),
 #        lty=1,pch=c(1,2,3,6),legend=c("IPW","OW","LR","DR"))
@@ -50,10 +50,10 @@ plot(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,3])^2,type='o',
      #                 list(pt=pt,h.degree=h.degree,s_string=s_string)),
      #ylim=range(MC_SD[n_index,2]/MC_SD[n_index,3],MC_SD[n_index,2]/MC_SD[n_index,4],MC_SD[n_index,2]/MC_SD[n_index,5],MC_SD[n_index,2]/MC_SD[n_index,6]),
      ylim=c(0,4),
-     col="black",pch=1)
-lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,4])^2,type='o',col="red",lwd=1.5,pch=2)
-lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,5])^2,type='o',col="purple",lwd=1.5,pch=3)
-lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,6])^2,type='o',col="blue",lwd=1.5,pch=6)
+     col="black",pch=15)
+lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,4])^2,type='o',col="red",lwd=1.5,pch=19)
+lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,5])^2,type='o',col="purple",lwd=1.5,pch=17)
+# lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,6])^2,type='o',col="blue",lwd=1.5,pch=6)
 # lines(MC_SD[n_index,1],MC_SD[n_index,2]/MC_SD[n_index,6],type='o',col="blue",pch=6)
 # legend("bottomright",col=c("black","red","purple","blue"),
 #        lty=1,pch=c(1,2,3,6),legend=c("IPW","OW","LR","DR"))
@@ -78,10 +78,10 @@ plot(MC_SD[n_index,1],MC_SD[n_index,2]/MC_SD[n_index,3],type='o',
      # main=substitute(paste("Standard deviation, ",r,"=",pt,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(pt=pt,h.degree=h.degree,s_string=s_string)),
      ylim=c(0,4),
-     col="black",pch=1)
-lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,4])^2,type='o',col="red",lwd=1.5,pch=2)
-lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,5])^2,type='o',col="purple",lwd=1.5,pch=3)
-lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,6])^2,type='o',col="blue",lwd=1.5,pch=6)
+     col="black",pch=15)
+lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,4])^2,type='o',col="red",lwd=1.5,pch=19)
+lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,5])^2,type='o',col="purple",lwd=1.5,pch=17)
+# lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,6])^2,type='o',col="blue",lwd=1.5,pch=6)
 # lines(MC_SD[n_index,1],MC_SD[n_index,2]/MC_SD[n_index,6],type='o',col="blue",pch=6)
 # legend("bottomright",col=c("black","red","purple","blue"),
 #        lty=1,pch=c(1,2,3,6),legend=c("IPW","OW","LR","DR"))
@@ -106,18 +106,18 @@ plot(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,3])^2,type='o',
      # main=substitute(paste("Standard deviation, ",r,"=",pt,", ",b[1],"=",h.degree,", ",s_string),
      #                 list(pt=pt,h.degree=h.degree,s_string=s_string)),
      ylim=c(0,4),
-     col="black",pch=1)
-lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,4])^2,type='o',col="red",lwd=1.5,pch=2)
-lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,5])^2,type='o',col="purple",lwd=1.5,pch=3)
-lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,6])^2,type='o',col="blue",lwd=1.5,pch=6)
+     col="black",pch=15)
+lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,4])^2,type='o',col="red",lwd=1.5,pch=19)
+lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,5])^2,type='o',col="purple",lwd=1.5,pch=17)
+# lines(MC_SD[n_index,1],(MC_SD[n_index,2]/MC_SD[n_index,6])^2,type='o',col="blue",lwd=1.5,pch=6)
 abline(h=1,lty=2,lwd=1.5)
 # lines(MC_SD[n_index,1],MC_SD[n_index,2]/MC_SD[n_index,6],type='o',col="blue",pch=6)
 # legend("bottomright",col=c("black","red","purple","blue"),
 #        lty=1,pch=c(1,2,3,6),legend=c("IPW","OW","LR","DR"))
 par(mar = c(0,0,1,0))
 plot(1, type = "n", axes=FALSE, xlab="", ylab="")
-legend("top",inset=0,title="Relative efficiency to UNADJ", col=c("black","purple","blue","red"),lwd=1.5,
-       lty=1,pch=c(1,3,6,2),legend=c("IPW","LR","AIPW","OW"),horiz=TRUE)
+legend("top",inset=0,title="Relative efficiency to UNADJ", col=c("black","purple","red"),lwd=1.5,
+       lty=1,pch=c(15,17,19),legend=c("IPW","LR","OW"),horiz=TRUE)
 
 dev.off()
 
@@ -141,7 +141,7 @@ dev.off()
 #      #                 list(pt=pt,h.degree=h.degree,s_string=s_string)),
 #      col="blue",pch=4)
 # lines(CRATE[,1],CRATE[,3],type='o',col="black",lwd=1.5,pch=1)
-# lines(CRATE[,1],CRATE[,4],type='o',col="red",lwd=1.5,pch=2)
+# lines(CRATE[,1],CRATE[,4],type='o',col="red",lwd=1.5,pch=19)
 # lines(CRATE[,1],CRATE[,5],type='o',col="purple",lwd=1.5,pch=3)
 # #lines(CRATE[,1],CRATE[,6],type='o',col="blue",pch=6)
 # abline(h=0.95,lty=1.5)
@@ -169,7 +169,7 @@ dev.off()
 #      #                 list(pt=pt,h.degree=h.degree,s_string=s_string)),
 #      col="blue",pch=4)
 # lines(CRATE[,1],CRATE[,3],type='o',col="black",lwd=1.5,pch=1)
-# lines(CRATE[,1],CRATE[,4],type='o',col="red",lwd=1.5,pch=2)
+# lines(CRATE[,1],CRATE[,4],type='o',col="red",lwd=1.5,pch=19)
 # lines(CRATE[,1],CRATE[,5],type='o',col="purple",lwd=1.5,pch=3)
 # #lines(CRATE[,1],CRATE[,6],type='o',col="blue",pch=6)
 # abline(h=0.95,lty=1.5)
@@ -196,7 +196,7 @@ dev.off()
 #      #                 list(pt=pt,h.degree=h.degree,s_string=s_string)),
 #      col="blue",pch=4)
 # lines(CRATE[,1],CRATE[,3],type='o',col="black",lwd=1.5,pch=1)
-# lines(CRATE[,1],CRATE[,4],type='o',col="red",lwd=1.5,pch=2)
+# lines(CRATE[,1],CRATE[,4],type='o',col="red",lwd=1.5,pch=19)
 # lines(CRATE[,1],CRATE[,5],type='o',col="purple",lwd=1.5,pch=3)
 # #lines(CRATE[,1],CRATE[,6],type='o',col="blue",pch=6)
 # abline(h=0.95,lty=1.5)
@@ -223,7 +223,7 @@ dev.off()
 #      #                 list(pt=pt,h.degree=h.degree,s_string=s_string)),
 #      col="blue",pch=4)
 # lines(CRATE[,1],CRATE[,3],type='o',col="black",lwd=1.5,pch=1)
-# lines(CRATE[,1],CRATE[,4],type='o',col="red",lwd=1.5,pch=2)
+# lines(CRATE[,1],CRATE[,4],type='o',col="red",lwd=1.5,pch=19)
 # lines(CRATE[,1],CRATE[,5],type='o',col="purple",lwd=1.5,pch=3)
 # #lines(CRATE[,1],CRATE[,6],type='o',col="blue",pch=6)
 # abline(h=0.95,lty=1.5)
